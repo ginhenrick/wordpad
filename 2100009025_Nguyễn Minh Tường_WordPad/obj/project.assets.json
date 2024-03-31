@@ -8,19 +8,19 @@
     "net8.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\MSI\\.nuget\\packages\\": {}
+    "C:\\Users\\DLL\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Winforms\\Assignment\\2100009025_Nguyễn Minh Tường_WordPad\\2100009025_Nguyễn Minh Tường_WordPad\\2100009025_Nguyễn Minh Tường_WordPad.csproj",
+      "projectUniqueName": "C:\\Users\\DLL\\Desktop\\wordpad\\2100009025_Nguyễn Minh Tường_WordPad\\2100009025_Nguyễn Minh Tường_WordPad.csproj",
       "projectName": "2100009025_Nguyễn Minh Tường_WordPad",
-      "projectPath": "D:\\Winforms\\Assignment\\2100009025_Nguyễn Minh Tường_WordPad\\2100009025_Nguyễn Minh Tường_WordPad\\2100009025_Nguyễn Minh Tường_WordPad.csproj",
-      "packagesPath": "C:\\Users\\MSI\\.nuget\\packages\\",
-      "outputPath": "D:\\Winforms\\Assignment\\2100009025_Nguyễn Minh Tường_WordPad\\2100009025_Nguyễn Minh Tường_WordPad\\obj\\",
+      "projectPath": "C:\\Users\\DLL\\Desktop\\wordpad\\2100009025_Nguyễn Minh Tường_WordPad\\2100009025_Nguyễn Minh Tường_WordPad.csproj",
+      "packagesPath": "C:\\Users\\DLL\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DLL\\Desktop\\wordpad\\2100009025_Nguyễn Minh Tường_WordPad\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\MSI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DLL\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

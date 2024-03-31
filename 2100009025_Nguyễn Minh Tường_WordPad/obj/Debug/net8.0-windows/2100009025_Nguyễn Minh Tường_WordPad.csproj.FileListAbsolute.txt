@@ -15,3 +15,21 @@ D:\Winforms\Assignment\2100009025_Nguyễn Minh Tường_WordPad\2100009025_Nguy
 D:\Winforms\Assignment\2100009025_Nguyễn Minh Tường_WordPad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.genruntimeconfig.cache
 D:\Winforms\Assignment\2100009025_Nguyễn Minh Tường_WordPad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\ref\2100009025_Nguyễn Minh Tường_WordPad.dll
 D:\Winforms\Assignment\2100009025_Nguyễn Minh Tường_WordPad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\_2100009025_Nguyễn_Minh_Tường_WordPad.Properties.Resources.resources
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\bin\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.exe
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\bin\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.deps.json
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\bin\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.runtimeconfig.json
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\bin\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.dll
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\bin\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.pdb
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\_2100009025_Nguyễn_Minh_Tường_WordPad.Form1.resources
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\_2100009025_Nguyễn_Minh_Tường_WordPad.Properties.Resources.resources
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.csproj.GenerateResource.cache
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.AssemblyInfoInputs.cache
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.AssemblyInfo.cs
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.csproj.CoreCompileInputs.cache
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.sourcelink.json
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.dll
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\refint\2100009025_Nguyễn Minh Tường_WordPad.dll
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.pdb
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.genruntimeconfig.cache
+C:\Users\DLL\Desktop\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\ref\2100009025_Nguyễn Minh Tường_WordPad.dll

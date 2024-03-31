@@ -69,15 +69,15 @@
             pageColorToolStripMenuItem = new ToolStripMenuItem();
             paragraphToolStripMenuItem = new ToolStripMenuItem();
             identToolStripMenuItem = new ToolStripMenuItem();
-            noneToolStripMenuItem = new ToolStripMenuItem();
-            ptsToolStripMenuItem = new ToolStripMenuItem();
-            ptsToolStripMenuItem1 = new ToolStripMenuItem();
-            ptsToolStripMenuItem2 = new ToolStripMenuItem();
-            ptsToolStripMenuItem3 = new ToolStripMenuItem();
+            IndentNoneToolStripMenuItem = new ToolStripMenuItem();
+            Indent5ptsMenuItem = new ToolStripMenuItem();
+            Indent10ptsMenuItem = new ToolStripMenuItem();
+            Indent15ptsMenuItem = new ToolStripMenuItem();
+            Indent20ptsMenuItem = new ToolStripMenuItem();
             alignToolStripMenuItem = new ToolStripMenuItem();
-            leftToolStripMenuItem = new ToolStripMenuItem();
-            centerToolStripMenuItem = new ToolStripMenuItem();
-            rightToolStripMenuItem = new ToolStripMenuItem();
+            AlignLeftMenuItem = new ToolStripMenuItem();
+            AlignCenterMenuItem = new ToolStripMenuItem();
+            AlignRightMenuItem = new ToolStripMenuItem();
             bulletToolStripMenuItem = new ToolStripMenuItem();
             addBulletsToolStripMenuItem = new ToolStripMenuItem();
             removeBulletsToolStripMenuItem = new ToolStripMenuItem();
@@ -365,68 +365,75 @@
             // 
             // identToolStripMenuItem
             // 
-            identToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { noneToolStripMenuItem, ptsToolStripMenuItem, ptsToolStripMenuItem1, ptsToolStripMenuItem2, ptsToolStripMenuItem3 });
+            identToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { IndentNoneToolStripMenuItem, Indent5ptsMenuItem, Indent10ptsMenuItem, Indent15ptsMenuItem, Indent20ptsMenuItem });
             identToolStripMenuItem.Name = "identToolStripMenuItem";
-            identToolStripMenuItem.Size = new Size(134, 26);
+            identToolStripMenuItem.Size = new Size(224, 26);
             identToolStripMenuItem.Text = "Indent";
             identToolStripMenuItem.Click += identToolStripMenuItem_Click;
             // 
-            // noneToolStripMenuItem
+            // IndentNoneToolStripMenuItem
             // 
-            noneToolStripMenuItem.Name = "noneToolStripMenuItem";
-            noneToolStripMenuItem.Size = new Size(132, 26);
-            noneToolStripMenuItem.Text = "None";
-            noneToolStripMenuItem.Click += noneToolStripMenuItem_Click;
+            IndentNoneToolStripMenuItem.Name = "IndentNoneToolStripMenuItem";
+            IndentNoneToolStripMenuItem.Size = new Size(132, 26);
+            IndentNoneToolStripMenuItem.Text = "None";
+            IndentNoneToolStripMenuItem.Click += noneToolStripMenuItem_Click;
             // 
-            // ptsToolStripMenuItem
+            // Indent5ptsMenuItem
             // 
-            ptsToolStripMenuItem.Name = "ptsToolStripMenuItem";
-            ptsToolStripMenuItem.Size = new Size(132, 26);
-            ptsToolStripMenuItem.Text = "5 pts";
+            Indent5ptsMenuItem.Name = "Indent5ptsMenuItem";
+            Indent5ptsMenuItem.Size = new Size(132, 26);
+            Indent5ptsMenuItem.Text = "5 pts";
+            Indent5ptsMenuItem.Click += Indent5ptsMenuItem_Click;
             // 
-            // ptsToolStripMenuItem1
+            // Indent10ptsMenuItem
             // 
-            ptsToolStripMenuItem1.Name = "ptsToolStripMenuItem1";
-            ptsToolStripMenuItem1.Size = new Size(132, 26);
-            ptsToolStripMenuItem1.Text = "10 pts";
+            Indent10ptsMenuItem.Name = "Indent10ptsMenuItem";
+            Indent10ptsMenuItem.Size = new Size(132, 26);
+            Indent10ptsMenuItem.Text = "10 pts";
+            Indent10ptsMenuItem.Click += Indent10ptsMenuItem_Click;
             // 
-            // ptsToolStripMenuItem2
+            // Indent15ptsMenuItem
             // 
-            ptsToolStripMenuItem2.Name = "ptsToolStripMenuItem2";
-            ptsToolStripMenuItem2.Size = new Size(132, 26);
-            ptsToolStripMenuItem2.Text = "15 pts";
+            Indent15ptsMenuItem.Name = "Indent15ptsMenuItem";
+            Indent15ptsMenuItem.Size = new Size(132, 26);
+            Indent15ptsMenuItem.Text = "15 pts";
+            Indent15ptsMenuItem.Click += Indent15ptsMenuItem_Click;
             // 
-            // ptsToolStripMenuItem3
+            // Indent20ptsMenuItem
             // 
-            ptsToolStripMenuItem3.Name = "ptsToolStripMenuItem3";
-            ptsToolStripMenuItem3.Size = new Size(132, 26);
-            ptsToolStripMenuItem3.Text = "20 pts";
+            Indent20ptsMenuItem.Name = "Indent20ptsMenuItem";
+            Indent20ptsMenuItem.Size = new Size(132, 26);
+            Indent20ptsMenuItem.Text = "20 pts";
+            Indent20ptsMenuItem.Click += Indent20ptsMenuItem_Click;
             // 
             // alignToolStripMenuItem
             // 
-            alignToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { leftToolStripMenuItem, centerToolStripMenuItem, rightToolStripMenuItem });
+            alignToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { AlignLeftMenuItem, AlignCenterMenuItem, AlignRightMenuItem });
             alignToolStripMenuItem.Name = "alignToolStripMenuItem";
-            alignToolStripMenuItem.Size = new Size(134, 26);
+            alignToolStripMenuItem.Size = new Size(224, 26);
             alignToolStripMenuItem.Text = "Align";
             alignToolStripMenuItem.Click += alignToolStripMenuItem_Click;
             // 
-            // leftToolStripMenuItem
+            // AlignLeftMenuItem
             // 
-            leftToolStripMenuItem.Name = "leftToolStripMenuItem";
-            leftToolStripMenuItem.Size = new Size(135, 26);
-            leftToolStripMenuItem.Text = "Left";
+            AlignLeftMenuItem.Name = "AlignLeftMenuItem";
+            AlignLeftMenuItem.Size = new Size(224, 26);
+            AlignLeftMenuItem.Text = "Left";
+            AlignLeftMenuItem.Click += AlignLeftMenuItem_Click;
             // 
-            // centerToolStripMenuItem
+            // AlignCenterMenuItem
             // 
-            centerToolStripMenuItem.Name = "centerToolStripMenuItem";
-            centerToolStripMenuItem.Size = new Size(135, 26);
-            centerToolStripMenuItem.Text = "Center";
+            AlignCenterMenuItem.Name = "AlignCenterMenuItem";
+            AlignCenterMenuItem.Size = new Size(224, 26);
+            AlignCenterMenuItem.Text = "Center";
+            AlignCenterMenuItem.Click += AlignCenterMenuItem_Click;
             // 
-            // rightToolStripMenuItem
+            // AlignRightMenuItem
             // 
-            rightToolStripMenuItem.Name = "rightToolStripMenuItem";
-            rightToolStripMenuItem.Size = new Size(135, 26);
-            rightToolStripMenuItem.Text = "Right";
+            AlignRightMenuItem.Name = "AlignRightMenuItem";
+            AlignRightMenuItem.Size = new Size(224, 26);
+            AlignRightMenuItem.Text = "Right";
+            AlignRightMenuItem.Click += AlignRightMenuItem_Click;
             // 
             // bulletToolStripMenuItem
             // 
@@ -439,13 +446,14 @@
             // addBulletsToolStripMenuItem
             // 
             addBulletsToolStripMenuItem.Name = "addBulletsToolStripMenuItem";
-            addBulletsToolStripMenuItem.Size = new Size(194, 26);
+            addBulletsToolStripMenuItem.Size = new Size(224, 26);
             addBulletsToolStripMenuItem.Text = "Add Bullets";
+            addBulletsToolStripMenuItem.Click += addBulletsToolStripMenuItem_Click_1;
             // 
             // removeBulletsToolStripMenuItem
             // 
             removeBulletsToolStripMenuItem.Name = "removeBulletsToolStripMenuItem";
-            removeBulletsToolStripMenuItem.Size = new Size(194, 26);
+            removeBulletsToolStripMenuItem.Size = new Size(224, 26);
             removeBulletsToolStripMenuItem.Text = "Remove Bullets";
             removeBulletsToolStripMenuItem.Click += removeBulletsToolStripMenuItem_Click;
             // 
@@ -682,15 +690,15 @@
         private ToolStripSeparator toolStripSeparator10;
         private ToolStripMenuItem insertImageToolStripMenuItem;
         private ToolStripMenuItem identToolStripMenuItem;
-        private ToolStripMenuItem noneToolStripMenuItem;
-        private ToolStripMenuItem ptsToolStripMenuItem;
-        private ToolStripMenuItem ptsToolStripMenuItem1;
-        private ToolStripMenuItem ptsToolStripMenuItem2;
-        private ToolStripMenuItem ptsToolStripMenuItem3;
+        private ToolStripMenuItem IndentNoneToolStripMenuItem;
+        private ToolStripMenuItem Indent5ptsMenuItem;
+        private ToolStripMenuItem Indent10ptsMenuItem;
+        private ToolStripMenuItem Indent15ptsMenuItem;
+        private ToolStripMenuItem Indent20ptsMenuItem;
         private ToolStripMenuItem alignToolStripMenuItem;
-        private ToolStripMenuItem leftToolStripMenuItem;
-        private ToolStripMenuItem centerToolStripMenuItem;
-        private ToolStripMenuItem rightToolStripMenuItem;
+        private ToolStripMenuItem AlignLeftMenuItem;
+        private ToolStripMenuItem AlignCenterMenuItem;
+        private ToolStripMenuItem AlignRightMenuItem;
         private ToolStripMenuItem addBulletsToolStripMenuItem;
         private ToolStripMenuItem removeBulletsToolStripMenuItem;
         private FontDialog fontDialog1;
