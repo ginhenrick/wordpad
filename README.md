@@ -32,6 +32,13 @@
     <td>10/10</td>
   </tr>
 </table>
+<h1>Mục tiêu</h1>
+<ul>
+  <li>Phát triển ứng dụng Single Document Interface.</li>
+  <li>Làm quen với MenuStrip, ToolStrip, StatusStrip.</li>
+  <li>Sử dụng các Common Dialog: OpenFileDialog, SaveFileDialog, ColorDialog, PrintDocument, ...</li>
+  <li>Sử dụng control RichTextBox.</li>
+</ul>
 
 <h1> Nội dung </h1>
 <p>Xây dựng một ứng dụng soạn thảo văn bản có các chức năng sau:</p>
