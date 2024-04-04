@@ -699,10 +699,15 @@ namespace _2100009025_Nguyễn_Minh_Tường_WordPad
             string aboutMessage = "THÀNH VIÊN NHÓM\n\n";
             aboutMessage += "Họ và tên                      MSSV                   Tỷ lệ hoàn thành Task\n";
             aboutMessage += "Nguyễn Minh Tường      2100009025    Hoành thành 7/7 chức năng\n";
-            aboutMessage += "Nguyễn Đức Duy            2100009025    Hoàn thành  6/8 chức năng\n";
-            aboutMessage += "Trịnh Văn Nguyên           2100009025    Hoàn thành  3/9 chức năng\n";
-            aboutMessage += "Vương Trọng Tín             2100009025     Hoàn thành  10/10 chức năng\n";
+            aboutMessage += "Nguyễn Đức Duy            2100012116    Hoàn thành  6/8 chức năng\n";
+            aboutMessage += "Trịnh Văn Nguyên           2100004998    Hoàn thành  3/9 chức năng\n";
+            aboutMessage += "Vương Trọng Tín             1911549016     Hoàn thành  10/10 chức năng\n";
             MessageBox.Show(aboutMessage, "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            findForm.Show();
         }
     }
 }

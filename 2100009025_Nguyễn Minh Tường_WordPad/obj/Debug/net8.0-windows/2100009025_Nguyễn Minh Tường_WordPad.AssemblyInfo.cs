@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("2100009025_Nguyễn Minh Tường_WordPad")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9166c948be0c4c2ba88ff7eb800221e0c14738e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+58e243d229c3214f5d3d652f579298437ba9c73d")]
 [assembly: System.Reflection.AssemblyProductAttribute("2100009025_Nguyễn Minh Tường_WordPad")]
 [assembly: System.Reflection.AssemblyTitleAttribute("2100009025_Nguyễn Minh Tường_WordPad")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
