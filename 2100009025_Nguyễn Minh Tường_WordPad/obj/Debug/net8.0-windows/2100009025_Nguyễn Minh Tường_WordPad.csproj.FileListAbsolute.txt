@@ -51,3 +51,5 @@ D:\Winforms\Assignment02\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\D
 D:\Winforms\Assignment02\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.pdb
 D:\Winforms\Assignment02\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\2100009025_Nguyễn Minh Tường_WordPad.genruntimeconfig.cache
 D:\Winforms\Assignment02\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\ref\2100009025_Nguyễn Minh Tường_WordPad.dll
+D:\Winforms\Assignment02\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\_2100009025_Nguyễn_Minh_Tường_WordPad.frmFind.resources
+D:\Winforms\Assignment02\wordpad\2100009025_Nguyễn Minh Tường_WordPad\obj\Debug\net8.0-windows\_2100009025_Nguyễn_Minh_Tường_WordPad.frmFindReplace.resources

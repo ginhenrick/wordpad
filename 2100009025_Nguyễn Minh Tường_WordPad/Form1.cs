@@ -1,14 +1,90 @@
+using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Drawing.Printing;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+
+
 
 namespace _2100009025_Nguyễn_Minh_Tường_WordPad
 {
     public partial class Form1 : Form
     {
+        private frmFind findForm;
+
+        private frmFindReplace findReplaceForm;
+
+        internal TextBox txtReplaceWith { get; set; }
+        internal TextBox txtFindWhat { get; set; }
+
         public Form1()
         {
             InitializeComponent();
+            InitializeFindForm();
+            rtbDoc.Click += rtbDoc_Click; // Attach event handler for RichTextBox click
+            rtbDoc.DragEnter += RtbDoc_DragEnter; // Attach event handler for DragEnter event
+            rtbDoc.DragDrop += RtbDoc_DragDrop; // Attach event handler for DragDrop event
+        }
+
+        private void InitializeFindForm()
+        {
+            findForm = new frmFind();
+            findForm.SearchRequested += FindForm_SearchRequested;
+        }
+
+        private void FindForm_SearchRequested(object sender, string searchText)
+        {
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                // Đặt vị trí con trỏ ở đầu văn bản để bắt đầu tìm kiếm
+                rtbDoc.SelectionStart = 0;
+                rtbDoc.SelectionLength = 0;
+
+                int count = 0;
+                int index = rtbDoc.Find(searchText, rtbDoc.SelectionStart + rtbDoc.SelectionLength, RichTextBoxFinds.None);
+                // Loại bỏ highlight từ cũ nếu có
+                RemoveOldHighlights();
+
+                // Tìm kiếm và highlight tất cả các từ cần tìm
+                while (index != -1)
+                {
+                    rtbDoc.SelectionStart = index;
+                    rtbDoc.SelectionLength = searchText.Length;
+                    rtbDoc.SelectionBackColor = Color.Yellow;
+
+                    // Tìm kiếm từ tiếp theo từ vị trí kết thúc của từ hiện tại
+                    index = rtbDoc.Find(searchText, index + searchText.Length, RichTextBoxFinds.None);
+                    count++;
+                }
+
+                // Scroll đến vị trí con trỏ hiện tại
+                rtbDoc.ScrollToCaret();
+
+                // Hiển thị hộp thoại thông báo với số lần từ được tìm thấy
+                MessageBox.Show($"Found {count} occurrences of '{searchText}'.", "Find", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Please enter text to search.", "Find", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void RemoveOldHighlights()
+        {
+            int originalSelectionStart = rtbDoc.SelectionStart;
+            int originalSelectionLength = rtbDoc.SelectionLength;
+
+            // Loại bỏ highlight từ cũ
+            for (int i = 0; i < rtbDoc.TextLength; i++)
+            {
+                rtbDoc.Select(i, 1);
+                rtbDoc.SelectionBackColor = rtbDoc.BackColor;
+            }
+
+            // Khôi phục vị trí con trỏ và chiều dài được chọn ban đầu
+            rtbDoc.Select(originalSelectionStart, originalSelectionLength);
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,27 +150,101 @@ namespace _2100009025_Nguyễn_Minh_Tường_WordPad
         private void XuLySaveAs()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Text|*.txt|Word Pad |*.rtf";
+            saveFileDialog.Filter = "Text files (*.txt)|*.txt|Rich Text Format (*.rtf)|*.rtf|All files (*.*)|*.*";
+
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                rtbDoc.SaveFile(saveFileDialog.FileName, RichTextBoxStreamType.RichText);
+                string extension = Path.GetExtension(saveFileDialog.FileName).ToLower();
+                if (extension == ".txt")
+                {
+                    rtbDoc.SaveFile(saveFileDialog.FileName, RichTextBoxStreamType.PlainText);
+                }
+                else if (extension == ".rtf")
+                {
+                    rtbDoc.SaveFile(saveFileDialog.FileName, RichTextBoxStreamType.RichText);
+                }
+                else
+                {
+                    // Xử lý trường hợp người dùng chọn định dạng khác (không bắt buộc)
+                    MessageBox.Show("Invalid file format. Please choose .txt or .rtf");
+                }
             }
-
         }
+
 
         private void pageSetupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+
+            // Hiển thị hộp thoại Page Setup
+            PageSetupDialog pageSetupDialog = new PageSetupDialog();
+
+            // Thiết lập cài đặt trang mặc định (có thể sửa đổi)
+            pageSetupDialog.PageSettings = new System.Drawing.Printing.PageSettings();
+
+            // Thiết lập hệ thống in mặc định (có thể sửa đổi)
+            pageSetupDialog.PrinterSettings = new System.Drawing.Printing.PrinterSettings();
+
+            // Hiển thị hộp thoại Page Setup và kiểm tra xem người dùng có nhấp vào OK không
+            if (pageSetupDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Lấy các thuộc tính trang được cài đặt từ hộp thoại Page Setup
+                System.Drawing.Printing.PageSettings pageSettings = pageSetupDialog.PageSettings;
+
+                // Áp dụng các cài đặt trang vào vùng RichTextBox (rtbDoc)
+                rtbDoc.SelectionAlignment = HorizontalAlignment.Left; // Thiết lập căn lề trái (ví dụ)
+                rtbDoc.SelectionColor = Color.Blue; // Thiết lập màu chữ (ví dụ)
+
+                // Điều chỉnh vị trí lề phù hợp
+                rtbDoc.SelectionIndent = pageSettings.Margins.Left; // Lề trái
+                rtbDoc.SelectionRightIndent = pageSettings.Margins.Right; // Lề phải
+                                                                          // Áp dụng các cài đặt khác tùy theo nhu cầu
+
+                // Lấy kích thước giấy đã chọn từ hộp thoại Page Setup
+                float paperWidth = pageSettings.PaperSize.Width; // Chiều rộng của giấy (đơn vị: 1/100 inch)
+                float paperHeight = pageSettings.PaperSize.Height; // Chiều cao của giấy (đơn vị: 1/100 inch)
+
+                // Chuyển đổi kích thước giấy từ đơn vị 1/100 inch sang pixel (đơn vị được sử dụng bởi RichTextBox)
+                int paperWidthInPixels = (int)(paperWidth * rtbDoc.ZoomFactor * 100 / 254); // Chuyển đổi sang pixel
+                int paperHeightInPixels = (int)(paperHeight * rtbDoc.ZoomFactor * 100 / 254); // Chuyển đổi sang pixel
+
+                // Đặt lại kích thước của RichTextBox để phù hợp với kích thước giấy
+                rtbDoc.Width = paperWidthInPixels;
+                rtbDoc.Height = paperHeightInPixels;
+                // Ghi nhận các cài đặt trang mới (nếu cần)
+                // Có thể lưu các cài đặt này để sử dụng lại trong tương lai
+
+                // Hiển thị thông báo xác nhận cho người dùng (tuỳ chọn)
+                MessageBox.Show("Page setup applied successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void previewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+            // Tạo PrintPreviewDialog
+            var printPreviewDialog = new PrintPreviewDialog();
+
+            // Thiết lập PrintPreviewDialog
+            printPreviewDialog.Document = printDocument1;
+
+            // Hiển thị PrintPreviewDialog
+            printPreviewDialog.ShowDialog();
         }
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            // Hiển thị hộp thoại PrintDialog
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                // In tài liệu
+                printDocument1.Print();
+            }
+
+        }
+        private void PrintPageHandler(object sender, PrintPageEventArgs e)
+        {
+            // Vẽ nội dung RichTextBox lên trang in
+            var graphics = e.Graphics;
+            graphics.DrawString(rtbDoc.Text, rtbDoc.Font, Brushes.Black, e.MarginBounds);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -116,15 +266,22 @@ namespace _2100009025_Nguyễn_Minh_Tường_WordPad
 
         private void findToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-
+            findForm.Show();
         }
+
+
+
+
+
 
         private void findAndReplaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmFindReplace findReplaceForm = new frmFindReplace(rtbDoc);
+            findReplaceForm.ShowDialog();
 
         }
+
+
 
         private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -148,32 +305,81 @@ namespace _2100009025_Nguyễn_Minh_Tường_WordPad
 
         private void insertImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Mở dialog chọn file
+            // Open the file dialog to select an image file
             openFileDialog1.ShowDialog();
 
-            // Kiểm tra nếu file được chọn
-            // Kiểm tra nếu có file được chọn
+            // Check if any file is selected
             if (openFileDialog1.FileNames.Length > 0)
             {
-                // Duyệt qua các file ảnh được chọn
                 foreach (string fileName in openFileDialog1.FileNames)
                 {
-                    // Đọc file ảnh
+                    // Read the image file
                     Image image = Image.FromFile(fileName);
 
-                    // Tạo một object PictureBox
-                    PictureBox pictureBox = new PictureBox();
-
-                    // Thiết lập các thuộc tính cho PictureBox
-                    pictureBox.Image = image;
-                    pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                    pictureBox.Dock = DockStyle.Fill;
-
-                    // Thêm PictureBox vào RichTextBox
-                    rtbDoc.Controls.Add(pictureBox);
+                    // Insert the image at the cursor position
+                    InsertImageAtCursorPosition(image);
                 }
             }
         }
+
+        private void InsertImageAtCursorPosition(Image image)
+        {
+            // Get the cursor position in the RichTextBox
+            int cursorIndex = rtbDoc.SelectionStart;
+
+            // Resize the image to fit within RichTextBox width
+            if (image.Width > rtbDoc.Width)
+            {
+                float aspectRatio = (float)image.Height / image.Width;
+                int newWidth = rtbDoc.Width - 20; // Reduce 20px for margins
+                int newHeight = (int)(newWidth * aspectRatio);
+                image = new Bitmap(image, new Size(newWidth, newHeight));
+            }
+
+            // Insert the image at the cursor position
+            Clipboard.SetImage(image);
+            rtbDoc.Paste();
+        }
+
+        private void RtbDoc_DragEnter(object sender, DragEventArgs e)
+        {
+            // Allow dropping of files onto the RichTextBox
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None;
+        }
+
+        private void RtbDoc_DragDrop(object sender, DragEventArgs e)
+        {
+            // Get the list of file paths dropped onto the RichTextBox
+            string[] fileNames = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+            // Check if any file is dropped
+            if (fileNames.Length > 0)
+            {
+                foreach (string fileName in fileNames)
+                {
+                    // Check if the dropped file is an image
+                    if (IsImageFile(fileName))
+                    {
+                        // Read the image file
+                        Image image = Image.FromFile(fileName);
+
+                        // Insert the image at the cursor position
+                        InsertImageAtCursorPosition(image);
+                    }
+                }
+            }
+        }
+
+        // Function to check if a file is an image file
+        private bool IsImageFile(string fileName)
+        {
+            string extension = Path.GetExtension(fileName).ToLower();
+            return extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif" || extension == ".bmp";
+        }
+
 
         private void selectFontToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -431,6 +637,72 @@ namespace _2100009025_Nguyễn_Minh_Tường_WordPad
                 // Áp dụng màu sắc cho văn bản được chọn
                 rtbDoc.SelectionColor = cd.Color;
             }
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 'O' && Control.ModifierKeys == Keys.Control)
+            {
+                XuliOpenFile();
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Khởi tạo PrintDocument
+            printDocument1 = new PrintDocument();
+            printDocument1.DocumentName = "My Document";
+            printDocument1.PrintPage += PrintPageHandler;
+
+            // Khởi tạo PrintDialog
+            printDialog1 = new PrintDialog();
+            printDialog1.Document = printDocument1;
+        }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+
+        }
+
+
+
+        private void rtbDoc_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rtbDoc_Click(object sender, EventArgs e)
+        {
+
+            // Set the cursor position to where the user clicked
+            Point cursorPosition = rtbDoc.PointToClient(Cursor.Position);
+            rtbDoc.SelectionStart = rtbDoc.GetCharIndexFromPosition(cursorPosition);
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowAboutDialog();
+        }
+
+        private void ShowAboutDialog()
+        {
+            string aboutMessage = "THÀNH VIÊN NHÓM\n\n";
+            aboutMessage += "Họ và tên                      MSSV                   Tỷ lệ hoàn thành Task\n";
+            aboutMessage += "Nguyễn Minh Tường      2100009025    Hoành thành 7/7 chức năng\n";
+            aboutMessage += "Nguyễn Đức Duy            2100009025    Hoàn thành  6/8 chức năng\n";
+            aboutMessage += "Trịnh Văn Nguyên           2100009025    Hoàn thành  3/9 chức năng\n";
+            aboutMessage += "Vương Trọng Tín             2100009025     Hoàn thành  10/10 chức năng\n";
+            MessageBox.Show(aboutMessage, "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
